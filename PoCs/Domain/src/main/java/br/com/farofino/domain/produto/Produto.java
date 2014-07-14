@@ -1,19 +1,23 @@
 package br.com.farofino.domain.produto;
 
-import br.com.farofino.domain.Categoria;
+import br.com.farofino.domain.categoria.Categoria;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.data.neo4j.annotation.GraphId;
-import org.springframework.data.neo4j.annotation.NodeEntity;
 
-@NodeEntity
+
+
 public class Produto implements Serializable {
-  @GraphId
   private String id;
+  
   private String nome;
+  
+  private String descricao;
+  
   private Categoria categoria;
-  private Map <CaracteristicaProduto, Object> caracteristicas = new HashMap <CaracteristicaProduto, Object> ();
+  
+
+  private Map <TipoCaracteristica, Serializable> caracteristicas = new HashMap <TipoCaracteristica, Serializable> ();
 
   public String getID() {
     return id;
@@ -30,7 +34,7 @@ public class Produto implements Serializable {
   public void setNome(String nome) {
     this.nome = nome;
   }
-
+  
   public Categoria getCategoria() {
     return categoria;
   }
@@ -39,11 +43,19 @@ public class Produto implements Serializable {
     this.categoria = categoria;
   }
 
-  public Map<CaracteristicaProduto, Object> getCaracteristicas() {
+  public Map<TipoCaracteristica, Serializable> getCaracteristicas() {
     return caracteristicas;
   }
 
-  public void setCaracteristicas(Map<CaracteristicaProduto, Object> caracteristicas) {
+  public void setCaracteristicas(Map<TipoCaracteristica, Serializable> caracteristicas) {
     this.caracteristicas = caracteristicas;
+  }
+
+  public String getDescricao() {
+    return descricao;
+  }
+
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
   }
 }

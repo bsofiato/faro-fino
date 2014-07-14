@@ -17,7 +17,7 @@ Any value defined here will override the pom.xml file value but is only applicab
     </properties>
     <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
         <config-files>
-            <config-file>src/test/java/br/com/farofino/domain/produto/neo4j/produto-neo4j-repository.xml</config-file>
+            <config-file>src/test/resources/br/com/farofino/domain/produto/hibernate/produto-hibernate-repository-test.xml</config-file>
         </config-files>
         <config-file-groups/>
     </spring-data>

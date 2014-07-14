@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <typedef name="JodaDateTimeType" class="org.jadira.usertype.dateandtime.joda.PersistentDateTime"/>
+  <typedef name="JodaMoneyType" class="org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyAmountAndCurrency"/>
+  <class name="br.com.farofino.domain.cotacao.Cotacao" table="COTACAO" mutable="false">
+    <id column="ID" length="36" name="ID">
+      <generator class="uuid2"/>
+    </id>
+    <natural-id mutable="false">
+      <many-to-one name="loja" class="br.com.farofino.domain.loja.Loja" not-null="true" foreign-key="COTACAO_LOJA_FK">
+        <column name="LOJA" index="COTACAO_LOJA_IDX"/>
+      </many-to-one>
+      <many-to-one name="produto" class="br.com.farofino.domain.produto.Produto" not-null="true" foreign-key="COTACAO_PRODUTO_FK">
+        <column name="PRODUTO" index="COTACAO_PRODUTO_IDX"/>
+      </many-to-one>
+      <property name="timestamp" type="JodaDateTimeType" column="TIMESTAMP" not-null="true" index="COTACAO_TIMESTAMP_IDX"/>
+    </natural-id>
+    <property name="valor" type="JodaMoneyType">
+      <column name="MOEDA" length="3" not-null="true" index="COTACAO_VALOR_IDX"/>
+      <column name="MONTANTE" precision="18" not-null="true" scale="2" index="COTACAO_VALOR_IDX" />
+    </property>
+  </class>  
+</hibernate-mapping>

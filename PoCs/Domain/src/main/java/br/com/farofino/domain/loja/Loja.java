@@ -1,4 +1,4 @@
-package br.com.farofino.domain;
+package br.com.farofino.domain.loja;
 
 import java.io.Serializable;
 import java.net.URL;
@@ -31,6 +31,4 @@ public class Loja implements Serializable {
   public void setHomepage(URL homepage) {
     this.homepage = homepage;
   }
-  
-  
 }

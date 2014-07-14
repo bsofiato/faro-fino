@@ -1,5 +1,6 @@
-package br.com.farofino.domain;
+package br.com.farofino.domain.cotacao;
 
+import br.com.farofino.domain.loja.Loja;
 import br.com.farofino.domain.produto.Produto;
 import org.joda.time.DateTime;
 import org.joda.money.Money;
@@ -48,6 +49,7 @@ public class Cotacao {
   }
 
   public void setTimestamp(DateTime timestamp) {
+    
     this.timestamp = timestamp;
   }
 }

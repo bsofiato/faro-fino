@@ -1,25 +1,29 @@
-package br.com.farofino.domain;
+package br.com.farofino.domain.categoria;
 
-import br.com.farofino.domain.produto.CaracteristicaProduto;
+import br.com.farofino.domain.produto.TipoCaracteristica;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Categoria implements Serializable {
-  private Categoria parent;
+  private String id;
+  
   private String nome;
-  private List <Categoria> children = new ArrayList <Categoria> ();
-  private Set <CaracteristicaProduto> caracteristicas = new HashSet <CaracteristicaProduto> ();
 
-  public Categoria getParent() {
-    return parent;
+  private Categoria parent;
+  
+  private Set <Categoria> children = new HashSet <Categoria> ();
+  
+  private Set <TipoCaracteristica> caracteristicas = new HashSet <TipoCaracteristica> ();
+  
+  public String getID() {
+    return id;
   }
 
-  public void setParent(Categoria parent) {
-    this.parent = parent;
+  public void setID(String id) {
+    this.id = id;
   }
+
 
   public String getNome() {
     return nome;
@@ -29,19 +33,27 @@ public class Categoria implements Serializable {
     this.nome = nome;
   }
 
-  public List<Categoria> getChildren() {
+  public Categoria getParent() {
+    return parent;
+  }
+
+  public void setParent(Categoria parent) {
+    this.parent = parent;
+  }
+
+  public Set<Categoria> getChildren() {
     return children;
   }
 
-  public void setChildren(List<Categoria> children) {
+  public void setChildren(Set<Categoria> children) {
     this.children = children;
   }
 
-  public Set<CaracteristicaProduto> getCaracteristicas() {
+  public Set<TipoCaracteristica> getCaracteristicas() {
     return caracteristicas;
   }
 
-  public void setCaracteristicas(Set<CaracteristicaProduto> caracteristicas) {
+  public void setCaracteristicas(Set<TipoCaracteristica> caracteristicas) {
     if (caracteristicas == null) {
       getCaracteristicas().clear();
     } else {
@@ -49,7 +61,7 @@ public class Categoria implements Serializable {
     }
   }
   
-  public Set <CaracteristicaProduto> getInhreritedCaracteristicas() {
+  /*public Set <CaracteristicaProduto> getInhreritedCaracteristicas() {
     Set <CaracteristicaProduto> caracteristicas = new HashSet <CaracteristicaProduto> (getCaracteristicas());
     if (getParent() != null) {
       caracteristicas.addAll(getParent().getInhreritedCaracteristicas());
@@ -61,5 +73,5 @@ public class Categoria implements Serializable {
     Set <CaracteristicaProduto> inheritedCaracteristicas = getInhreritedCaracteristicas();
     inheritedCaracteristicas.removeIf(caracteristica -> !caracteristica.isDefining());
     return inheritedCaracteristicas;
-  }
+  }*/
 }
