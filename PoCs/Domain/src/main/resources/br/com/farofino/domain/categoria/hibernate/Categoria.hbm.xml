@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class name="br.com.farofino.domain.categoria.Categoria" table="CATEGORIA">
     <id column="ID" length="36" name="ID">
       <generator class="uuid2"/>
     </id>
-    <property name="nome" column="NOME" length="256" not-null="true"/>
-    <many-to-one class="br.com.farofino.domain.categoria.Categoria" column="MAE" name="parent" lazy="proxy" foreign-key="CATEGORIA_MAE_FK" index="CATEGORIA_MAE_IDX"/>
+    <property column="NOME" length="256" name="nome" not-null="true"/>
+    <many-to-one class="br.com.farofino.domain.categoria.Categoria" column="MAE" foreign-key="CATEGORIA_MAE_FK" index="CATEGORIA_MAE_IDX" lazy="proxy" name="parent"/>
     <set cascade="all-delete-orphan" inverse="true" lazy="true" name="children">
       <key foreign-key="CATEGORIA_MAE_FK" on-delete="cascade">
-        <column name="MAE" index="CATEGORIA_MAE_IDX"/>
+        <column index="CATEGORIA_MAE_IDX" name="MAE"/>
       </key>
       <one-to-many class="br.com.farofino.domain.categoria.Categoria"/>
     </set>
-    <set name="caracteristicas" table="CATEGORIATIPOCARACTERISTICA" lazy="true">
+    <set lazy="true" name="caracteristicas" table="CATEGORIATIPOCARACTERISTICA">
       <key foreign-key="CATEGORIA_CATEGORIATIPOCARACTERISTICA_FK">
-        <column name="CATEGORIA" index="CATEGORIA_CATEGORIATIPOCARACTERISTICA_IDX"/>
+        <column index="CATEGORIA_CATEGORIATIPOCARACTERISTICA_IDX" name="CATEGORIA"/>
       </key>
-      <many-to-many class="br.com.farofino.domain.produto.TipoCaracteristica" foreign-key="CATEGORIATIPOCARACTERISTICA_TIPO_FK">
-        <column name="TIPO" index="CATEGORIATIPOCARACTERISTICA_TIPO_IDX"/>
+      <many-to-many class="br.com.farofino.domain.categoria.TipoCaracteristica" foreign-key="CATEGORIATIPOCARACTERISTICA_TIPO_FK">
+        <column index="CATEGORIATIPOCARACTERISTICA_TIPO_IDX" name="TIPO"/>
       </many-to-many>
     </set>
   </class>

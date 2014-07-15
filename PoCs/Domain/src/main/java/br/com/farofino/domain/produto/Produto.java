@@ -1,5 +1,6 @@
 package br.com.farofino.domain.produto;
 
+import br.com.farofino.domain.categoria.TipoCaracteristica;
 import br.com.farofino.domain.categoria.Categoria;
 import java.io.Serializable;
 import java.util.HashMap;

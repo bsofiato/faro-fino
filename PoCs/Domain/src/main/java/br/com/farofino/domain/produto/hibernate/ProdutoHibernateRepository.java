@@ -1,7 +1,7 @@
 package br.com.farofino.domain.produto.hibernate;
 
 import br.com.farofino.domain.categoria.Categoria;
-import br.com.farofino.domain.produto.TipoCaracteristica;
+import br.com.farofino.domain.categoria.TipoCaracteristica;
 import br.com.farofino.domain.produto.Produto;
 import br.com.farofino.domain.produto.ProdutoRepository;
 import org.springframework.orm.hibernate4.HibernateTemplate;

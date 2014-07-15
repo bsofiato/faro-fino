@@ -1,13 +1,12 @@
 package br.com.farofino.domain.categoria;
 
-import br.com.farofino.domain.produto.TipoCaracteristica;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Categoria implements Serializable {
   private String id;
-  
+
   private String nome;
 
   private Categoria parent;
@@ -59,6 +58,13 @@ public class Categoria implements Serializable {
     } else {
       this.caracteristicas = caracteristicas;
     }
+  }
+  
+  public Categoria createChild() {
+    Categoria categoria = new Categoria();
+    categoria.setParent(this);
+    getChildren().add(categoria);
+    return categoria;
   }
   
   /*public Set <CaracteristicaProduto> getInhreritedCaracteristicas() {
