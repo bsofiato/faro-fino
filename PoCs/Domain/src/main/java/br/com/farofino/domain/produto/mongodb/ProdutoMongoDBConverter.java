@@ -22,5 +22,4 @@ public class ProdutoMongoDBConverter implements Converter <Produto, DBObject>{
     s.getCaracteristicas().forEach((k, v) -> caracteristicas.put(k.getNome(), v));
     return object;
   }
-  
 }

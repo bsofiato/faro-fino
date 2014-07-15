@@ -1,10 +1,7 @@
 package br.com.farofino.domain.produto;
 
-import br.com.farofino.domain.categoria.TipoCaracteristica;
-import br.com.farofino.domain.categoria.Categoria;
-import java.util.Map;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-public interface ProdutoRepository {
-  String save(Produto produto);
-  Produto findProduto(Categoria categoria, Map <TipoCaracteristica, Object> caracteristicas);
+public interface ProdutoRepository extends CrudRepository<Produto, String>, ProdutoRepositoryCustom {
 }

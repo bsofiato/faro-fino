@@ -4,7 +4,7 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-                           http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+                           http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd" xmlns:ns1="http://www.springframework.org/schema/data/repository">
   <mongo:db-factory id="farofinoMongoDBFactory" 
                     dbname="farofino" 
                     username="farofino" 
@@ -18,9 +18,17 @@
       </mongo:converter>
     </mongo:custom-converters>
   </mongo:mapping-converter>
-  
+
   <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
     <constructor-arg ref="farofinoMongoDBFactory"/>
     <constructor-arg ref="faforinoMongoDBMappingConverter"/>
   </bean>  
+  
+  <mongo:repositories mongo-template-ref="mongoTemplate" base-package="br.com.farofino.**" repository-impl-postfix="Implementation">
+    <mongo:repository id="produtoRepository" custom-impl-ref="produtoRepositoryImplementation" repository-impl-postfix="Implementation"/>
+  </mongo:repositories>
+  
+  <bean id="produtoRepositoryImplementation" class="br.com.farofino.domain.produto.mongodb.ProdutoRepositoryImplementation">
+    <constructor-arg ref="mongoTemplate"/>
+  </bean>
 </beans>
