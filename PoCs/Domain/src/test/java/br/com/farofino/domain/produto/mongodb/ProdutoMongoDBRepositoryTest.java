@@ -5,7 +5,6 @@ import br.com.farofino.domain.categoria.TipoCaracteristica;
 import br.com.farofino.domain.produto.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -18,16 +17,17 @@ public class ProdutoMongoDBRepositoryTest extends AbstractTestNGSpringContextTes
   
   @Test
   public void testX() {
-/*    TipoCaracteristica <String> c1 = new TipoCaracteristica<String>();
-    c1.setNome("ABC");
+    TipoCaracteristica <String> c1 = new TipoCaracteristica<String>();
+    c1.setNome("isbn");
+    
     Produto produto = new Produto();
+    //produto.setID("123456789");
     produto.setNome("Teste");
     produto.setDescricao("HAHAHA");
-    produto.getCaracteristicas().put(c1, "HAHAHAH");*/
+    produto.getCaracteristicas().put(c1, "124724654742");
+    produto.setCategoria(new Categoria());
+    produto.getCategoria().setID("123474326534");
     
-    Categoria categoria = new Categoria();
-    categoria.setNome("pai");
-    Categoria filho = categoria.createChild();    
-    mongoTemplate.save(categoria);
+    mongoTemplate.save(produto);
   }
 }

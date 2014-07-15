@@ -12,7 +12,6 @@
     <property name="dataSource" ref="dataSource" />
     <property name="mappingResources">
       <list>
-        <value>br/com/farofino/domain/cotacao/hibernate/TipoCaracteristica.hbm.xml</value>
         <value>br/com/farofino/domain/loja/hibernate/Loja.hbm.xml</value>
         <value>br/com/farofino/domain/cotacao/hibernate/Cotacao.hbm.xml</value>
         <value>br/com/farofino/domain/categoria/hibernate/Categoria.hbm.xml</value>

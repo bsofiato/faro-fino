@@ -13,13 +13,15 @@
       </key>
       <one-to-many class="br.com.farofino.domain.categoria.Categoria"/>
     </set>
-    <set lazy="true" name="caracteristicas" table="CATEGORIATIPOCARACTERISTICA">
-      <key foreign-key="CATEGORIA_CATEGORIATIPOCARACTERISTICA_FK">
-        <column index="CATEGORIA_CATEGORIATIPOCARACTERISTICA_IDX" name="CATEGORIA"/>
+    <set lazy="true" name="caracteristicas" table="TIPOCARACTERISTICA">
+      <key foreign-key="CATEGORIA_TIPOCARACTERISTICA_FK" not-null="true">
+        <column name="CATEGORIA" index="CATEGORIA_TIPOCARACTERISTICA_IDX"/>
       </key>
-      <many-to-many class="br.com.farofino.domain.categoria.TipoCaracteristica" foreign-key="CATEGORIATIPOCARACTERISTICA_TIPO_FK">
-        <column index="CATEGORIATIPOCARACTERISTICA_TIPO_IDX" name="TIPO"/>
-      </many-to-many>
+      <composite-element class="br.com.farofino.domain.categoria.TipoCaracteristica">
+        <property name="nome" column="NOME" length="80" not-null="true"/>
+        <property name="defining" column="CHAVE" length="1" not-null="true"/>
+        <property name="type" column="TIPO" length="256" not-null="true"/>
+      </composite-element>
     </set>
   </class>
 </hibernate-mapping>
