@@ -16,3 +16,4 @@ hs_err_pid*
 /FaroFino/FaroFino/FaroFino-web/target/
 /FaroFino/FaroFino/FaroFino-ear/target/
 /PoCs/Domain/target/
+*.tlog
