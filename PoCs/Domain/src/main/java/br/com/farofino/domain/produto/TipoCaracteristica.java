@@ -1,18 +1,11 @@
 package br.com.farofino.domain.produto;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 public class TipoCaracteristica implements Serializable {
   private String id;
-
   private String nome;
+  private Class type;
   
   private boolean defining;
 
@@ -38,5 +31,13 @@ public class TipoCaracteristica implements Serializable {
 
   public void setDefining(boolean defining) {
     this.defining = defining;
+  }
+
+  public Class getType() {
+    return type;
+  }
+
+  public void setType(Class type) {
+    this.type = type;
   }
 }

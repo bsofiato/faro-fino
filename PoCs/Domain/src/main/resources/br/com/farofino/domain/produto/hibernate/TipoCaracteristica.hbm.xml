@@ -7,5 +7,6 @@
     </id>
     <property name="nome" column="NOME" length="256" not-null="true"/>
     <property name="defining" column="IDENTIFICADOR" length="1" not-null="true"/>
+    <property name="type" column="TIPO" length="32" not-null="true"/>
   </class>
 </hibernate-mapping>
