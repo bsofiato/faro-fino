@@ -8,7 +8,7 @@
   <mongo:db-factory id="farofinoMongoDBFactory" 
                     dbname="farofino" 
                     username="farofino" 
-                    host="192.168.0.113"
+                    host="192.168.56.101"
                     password="x"/>
 
   <mongo:mapping-converter id="faforinoMongoDBMappingConverter" db-factory-ref="farofinoMongoDBFactory">

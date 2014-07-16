@@ -18,7 +18,7 @@ Any value defined here will override the pom.xml file value but is only applicab
     <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
         <config-files>
             <config-file>src/test/resources/br/com/farofino/domain/produto/hibernate/produto-hibernate-repository-test.xml</config-file>
-            <config-file>src/test/resources/br/com/farofino/domain/produto/mongodb/produto-mongodb-repository-test.xml</config-file>
+            <config-file>src/test/resources/hibernate-jpa-test.xml</config-file>
         </config-files>
         <config-file-groups/>
     </spring-data>

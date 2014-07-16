@@ -17,3 +17,4 @@ hs_err_pid*
 /FaroFino/FaroFino/FaroFino-ear/target/
 /PoCs/Domain/target/
 *.tlog
+/desktop.ini

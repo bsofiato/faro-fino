@@ -5,10 +5,9 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import java.util.HashMap;
 import java.util.Map;
-import org.bson.types.ObjectId;
 import org.springframework.core.convert.converter.Converter;
 
-public class ProdutoMongoDBConverter implements Converter <Produto, DBObject>{
+public class ProdutoMongoDBWritingConverter implements Converter <Produto, DBObject>{
 
   @Override
   public DBObject convert(Produto s) {

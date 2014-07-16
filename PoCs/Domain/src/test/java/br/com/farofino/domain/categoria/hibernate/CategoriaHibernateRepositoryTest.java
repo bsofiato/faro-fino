@@ -1,14 +1,9 @@
-package br.com.farofino.domain.produto.hibernate;
+package br.com.farofino.domain.categoria.hibernate;
 
-import br.com.farofino.domain.produto.ProdutoRepository;
+import br.com.farofino.domain.categoria.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
-import org.springframework.transaction.support.TransactionCallback;
-import org.springframework.transaction.support.TransactionTemplate;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -19,11 +14,11 @@ import org.testng.annotations.Test;
  *
  * @author bruno
  */
-@ContextConfiguration("produto-hibernate-repository-test.xml")
-public class ProdutoHibernateRepositoryTest extends AbstractTransactionalTestNGSpringContextTests {
+@ContextConfiguration("categoria-hibernate-repository-test.xml")
+public class CategoriaHibernateRepositoryTest extends AbstractTransactionalTestNGSpringContextTests {
   
   @Autowired
-  private ProdutoRepository repository;
+  private CategoriaRepository repository;
   
   @BeforeClass
   public static void setUpClass() throws Exception {
@@ -43,6 +38,8 @@ public class ProdutoHibernateRepositoryTest extends AbstractTransactionalTestNGS
   
   @Test
   public void testOK() throws Exception {
+    System.out.println(repository.findOne("ABC"));
+    
     /*TransactionTemplate txTemplate = new TransactionTemplate(manager, new DefaultTransactionDefinition());
     txTemplate.execute(new TransactionCallback<Object> () {
       @Override
