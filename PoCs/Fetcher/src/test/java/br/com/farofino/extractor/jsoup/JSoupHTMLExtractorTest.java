@@ -72,10 +72,11 @@ public class JSoupHTMLExtractorTest {
   public void testProductInfo() throws Exception {
     String string = IOUtils.toString(getClass().getResourceAsStream("product.html"));
     JSoupHTMLExtractor extractor = new JSoupHTMLExtractor();
-    extractor.extract(string, new MockExtractorDelegator(Arrays.asList("(//*[@itemprop='name'])[1]", 
-                                                                       "(//*[@itemprop='price'])[1]", 
-                                                                       "(//div[@class='details_block']/b[3]/following-sibling::a[1])", 
-                                                                       "(//div[@class='details_block']/b[4]/following-sibling::a[1])")));
+    extractor.extract(string, new MockExtractorDelegator(Arrays.asList("(//*[@itemprop='name'])[1]",   //Nome
+                                                                       "(//*[@itemprop='price'])[1]",  //Preco
+                                                                       "(//div[@class='details_block']/b[3]/following-sibling::a[1])", //Programador
+                                                                       "(//div[@class='details_block']/b[4]/following-sibling::a[1])", //Editora
+                                                                       "(//div[contains(concat(' ', @class, ' '), 'highlight_strip_screenshot')]/img/@src)"))); //Imagens
     
     
   }
