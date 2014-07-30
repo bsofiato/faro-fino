@@ -2,26 +2,23 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class name="br.com.farofino.domain.categoria.Categoria" table="CATEGORIA">
+    <cache usage="nonstrict-read-write"/>
     <id column="ID" length="36" name="ID">
       <generator class="uuid2"/>
     </id>
     <property column="NOME" length="256" name="nome" not-null="true"/>
     <many-to-one class="br.com.farofino.domain.categoria.Categoria" column="MAE" foreign-key="CATEGORIA_MAE_FK" index="CATEGORIA_MAE_IDX" lazy="proxy" name="parent"/>
     <set cascade="all-delete-orphan" inverse="true" lazy="true" name="children">
+      <cache usage="nonstrict-read-write"/>
       <key foreign-key="CATEGORIA_MAE_FK" on-delete="cascade">
         <column index="CATEGORIA_MAE_IDX" name="MAE"/>
       </key>
       <one-to-many class="br.com.farofino.domain.categoria.Categoria"/>
     </set>
-    <set lazy="true" name="caracteristicas" table="TIPOCARACTERISTICA">
-      <key foreign-key="CATEGORIA_TIPOCARACTERISTICA_FK" not-null="true">
-        <column name="CATEGORIA" index="CATEGORIA_TIPOCARACTERISTICA_IDX"/>
-      </key>
-      <composite-element class="br.com.farofino.domain.categoria.TipoCaracteristica">
-        <property name="nome" column="NOME" length="80" not-null="true"/>
-        <property name="defining" column="CHAVE" length="1" not-null="true"/>
-        <property name="type" column="TIPO" length="256" not-null="true"/>
-      </composite-element>
+    <set lazy="true" name="caracteristicas" table="TIPOCARACTERISTICA" inverse="true" cascade="all-delete-orphan">
+      <cache usage="nonstrict-read-write"/>
+      <key column="CATEGORIA" foreign-key="TIPOCATEGORIA_CATEGORIA_FK" on-delete="cascade"/>
+      <one-to-many class="br.com.farofino.domain.categoria.TipoCaracteristica"/>
     </set>
   </class>
 </hibernate-mapping>

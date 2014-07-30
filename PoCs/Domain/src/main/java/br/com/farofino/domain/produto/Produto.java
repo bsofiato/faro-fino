@@ -5,6 +5,7 @@ import br.com.farofino.domain.categoria.Categoria;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 
@@ -15,7 +16,7 @@ public class Produto implements Serializable {
   
   private String descricao;
   
-  private Categoria categoria;
+  private Set<Categoria> categorias;
   
 
   private Map <TipoCaracteristica, Serializable> caracteristicas = new HashMap <TipoCaracteristica, Serializable> ();
@@ -36,12 +37,12 @@ public class Produto implements Serializable {
     this.nome = nome;
   }
   
-  public Categoria getCategoria() {
-    return categoria;
+  public Set<Categoria> getCategorias() {
+    return categorias;
   }
 
-  public void setCategoria(Categoria categoria) {
-    this.categoria = categoria;
+  public void setCategorias(Set<Categoria> categorias) {
+    this.categorias = categorias;
   }
 
   public Map<TipoCaracteristica, Serializable> getCaracteristicas() {

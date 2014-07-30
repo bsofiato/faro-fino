@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="br.com.farofino.domain.produto.Produto" table="PRODUTO">
+    <id column="ID" length="36" name="ID">
+      <generator class="uuid2"/>
+    </id>
+    <property name="nome" column="NOME" length="256" not-null="true"/>
+    <property name="descricao" column="DESCRICAO" type="text" not-null="true"/>
+    <set name="categorias" table="PRODUTOCATEGORIA">
+      <key not-null="true" foreign-key="PRODUTOCATEGORIA_PRODUTO_FK">
+        <column name="PRODUTO" index="PRODUTOCATEGORIA_PRODUTO_IDX"/>
+      </key>
+      <many-to-many class="br.com.farofino.domain.categoria.Categoria" foreign-key="PRODUTOCATEGORIA_CATEGORIA_FK">
+        <column name="CATEGORIA" index="PRODUTOCATEGORIA_CATEGORIA_IDX"/>
+      </many-to-many>
+    </set>
+    <map name="caracteristicas" cascade="all-delete-orphan" table="CARACTERISTICAPRODUTO">
+      <key not-null="true" foreign-key="CARACTERISTICAPRODUTO_PRODUTO_FK">
+        <column name="PRODUTO" index="CARACTERISTICAPRODUTO_PRODUTO_IDX"/>
+      </key>
+      <map-key-many-to-many class="br.com.farofino.domain.categoria.TipoCaracteristica" foreign-key="CARACTERISTICAPRODUTO_TIPO_FK">
+        <column name="CATEGORIA" index="CARACTERISTICAPRODUTO_TIPO_IDX"/>
+        <column name="TIPOCARACTERISTICA" index="CARACTERISTICAPRODUTO_TIPO_IDX"/>
+      </map-key-many-to-many>
+      <element column="VALOR" type="text" not-null="true"/>
+    </map>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="br.com.farofino.domain.categoria.TipoCaracteristica" table="TIPOCARACTERISTICA">
+    <composite-id>
+      <key-many-to-one class="br.com.farofino.domain.categoria.Categoria" foreign-key="TIPOCARACTERISTICA_CATEGORIA_FK" name="categoria">
+        <column name="CATEGORIA" index="TIPOCARACTERISTICA_CATEGORIA_IDX"/>
+      </key-many-to-one>
+      <key-property name="nome" length="80">
+        <column name="NOME" index="TIPOCARACTERISTICA_NOME_IDX"/>
+      </key-property>
+    </composite-id>
+    <property name="defining" column="DEFINING" not-null="true"/>
+    <property name="type" column="TIPO" not-null="true" length="256"/>
+  </class>
+</hibernate-mapping>

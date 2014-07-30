@@ -3,7 +3,7 @@ package br.com.farofino.domain.categoria;
 import java.io.Serializable;
 
 public class TipoCaracteristica <Type> implements Serializable {
-  
+  private Categoria categoria;
   private String nome;
   private Class <Type> type;
   private boolean defining;
@@ -30,5 +30,13 @@ public class TipoCaracteristica <Type> implements Serializable {
 
   public void setType(Class <Type> type) {
     this.type = type;
+  }
+
+  public Categoria getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;
   }
 }
