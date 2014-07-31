@@ -5,8 +5,8 @@
 <hibernate-mapping>
   <typedef name="JodaDateTimeType" class="org.jadira.usertype.dateandtime.joda.PersistentDateTime"/>
   <typedef name="JodaMoneyType" class="org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyAmountAndCurrency"/>
-  <typedef name="ProdutoType" class="br.com.farofino.domain.produto.hibernate.ProdutoUserType"/>  
   <class name="br.com.farofino.domain.cotacao.Cotacao" table="COTACAO" mutable="false">
+    <cache usage="read-write"/>
     <id column="ID" length="36" name="ID">
       <generator class="uuid2"/>
     </id>
@@ -14,9 +14,9 @@
       <many-to-one name="loja" class="br.com.farofino.domain.loja.Loja" not-null="true" foreign-key="COTACAO_LOJA_FK">
         <column name="LOJA" index="COTACAO_LOJA_IDX"/>
       </many-to-one>
-      <property name="produto" type="ProdutoType" not-null="true" length="36">
+      <many-to-one name="produto" class="br.com.farofino.domain.produto.Produto" not-null="true" foreign-key="COTACAO_PRODUTO_FK">
         <column name="PRODUTO" index="COTACAO_PRODUTO_IDX"/>
-      </property>
+      </many-to-one>
       <property name="timestamp" type="JodaDateTimeType" column="TIMESTAMP" not-null="true" index="COTACAO_TIMESTAMP_IDX"/>
     </natural-id>
     <property name="valor" type="JodaMoneyType">

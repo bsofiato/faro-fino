@@ -6,18 +6,10 @@
 <hibernate-mapping>
   <typedef name="CotacaoServiceFactoryType" class="br.com.farofino.domain.fetcher.hibernate.CotacaoServiceFactoryType"/>
   <class name="br.com.farofino.domain.loja.Loja" table="LOJA">
+    <cache usage="nonstrict-read-write"/>
     <id column="ID" length="36" name="ID">
       <generator class="uuid2"/>
     </id>
     <property name="nome" column="NOME" length="256" not-null="true"/>
-    <property name="cotacaoServiceFactory" column="COTACAOSERVICEAPPCONTEXT" length="256" not-null="true" type="CotacaoServiceFactoryType"/>
-    <set name="categorias" table="CATEGORIALOJA">
-      <key not-null="true" foreign-key="CATEGORIALOJA_LOJA_FK">
-        <column name="LOJA" index="CATEGORIALOJA_LOJA_IDX"/>
-      </key>
-      <many-to-many foreign-key="CATEGORIALOJA_CATEGORIA_FK" class="br.com.farofino.domain.categoria.Categoria">
-        <column name="CATEGORIA" index="CATEGORIALOJA_CATEGORIA_IDX"/>
-      </many-to-many>  
-    </set>
   </class>
 </hibernate-mapping>
